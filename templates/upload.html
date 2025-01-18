@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Notebook</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #26323f;
+            color: #1d373d;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #34495e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            height: 40px;
+        }
+        header nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-left: 20px;
+        }
+        header nav a:hover {
+            color: #3498db;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+        form {
+            margin: 20px auto;
+            background: #34495e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            width: 50%;
+        }
+        .file-input-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        label:hover {
+            background-color: #2980b9;
+        }
+        .selected-file {
+            margin-left: 15px;
+            font-size: 1rem;
+            color: #bdc3c7;
+        }
+        input[type="submit"] {
+            background-color: #e74c3c;
+            color: #ecf0f1;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #c0392b;
+        }
+        input[type="submit"]:disabled {
+            background-color: #7f8c8d;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/static/images/logo.png" alt="App Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict/">Predict to the User</a>
+        </nav>
+    </header>
+    <div>
+        <h1>Upload Your Notebook</h1>
+        <form action="/insights/upload/" method="POST" enctype="multipart/form-data">
+            <div class="file-input-container">
+                <label for="file-input">Choose a file</label>
+                <input type="file" id="file-input" name="notebook" accept=".ipynb" required>
+                <span class="selected-file" id="file-name">No file selected</span>
+            </div>
+            <input type="submit" value="Upload and Process" id="upload-button" disabled>
+        </form>
+    </div>
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const fileNameSpan = document.getElementById('file-name');
+        const uploadButton = document.getElementById('upload-button');
+
+        // Update file name when a file is selected
+        fileInput.addEventListener('change', function () {
+            const fileName = fileInput.files[0]?.name || "No file selected";
+            fileNameSpan.textContent = fileName;
+
+            // Enable the upload button if a file is selected
+            uploadButton.disabled = !fileInput.files.length;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #26323f;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #34495e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            height: 40px;
+        }
+        header nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-left: 20px;
+        }
+        header nav a:hover {
+            color: #3498db;
+        }
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        .content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #f0f2f0;
+
+        }
+        .content h2 {
+            font-size: 2rem;
+            color: #4caf50;
+            margin: 15px 0;
+        }
+        .content p {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+        }
+        .graphs {
+            margin-top: 20px;
+        }
+        .graphs h3 {
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
+        }
+        .graphs img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons a {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .buttons a:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #34495e;
+            color: #ecf0f1;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/static/images/logo.png" alt="App Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict/">Back To Form</a>
+        </nav>
+    </header>
+    <div class="content">
+        <h1>Prediction Results</h1>
+        <p>Your probability of securing an internship is:</p>
+        <h2>{{ probability }}</h2>
+        <div class="graphs">
+            <h3>Graph 1: User Probability vs Field Average</h3>
+            <img src="{{ graph1 }}" alt="User Probability vs Field Average">
+            <h3>Graph 2: Internships Completed</h3>
+            <img src="{{ graph2 }}" alt="Internships Completed">
+        </div>
+        <div class="buttons">
+            <a href="/predict/">Go Back to Form</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Prediction Insights(RWSW)</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Insights</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <img src="/static/images/logo.png" alt="App Logo">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/predict/">User Form</a>
+            <a href="/statistics/">Statistics</a>
+        </nav>
+    </header>
+    <div class="content">
+        <div>
+            <h2>1. Field of Study</h2>
+            <p>{{ field_insight }}</p>
+        </div>
+        <div>
+            <h2>2. Professional Activities</h2>
+            <p>{{ engagement_insight }}</p>
+        </div>
+        <div>
+            <h2>3. Internship Experience</h2>
+            <p>{{ internship_insight }}</p>
+        </div>
+        
+        <div class="buttons">
+            <a href="/predict/">Go Back to Form</a>
+        </div>
+    </div>
+</body>
+</html>

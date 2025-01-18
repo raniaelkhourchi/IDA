@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #26323f;
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #34495e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        header nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-left: 20px;
+        }
+        header nav a:hover {
+            color: #3498db;
+        }
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .visualizations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .visualization {
+            width: 45%;
+            max-width: 400px;
+            background-color: #33587d;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .visualization:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        p {
+            color: #020a10;
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #000000;
+            color: #ecf0f1;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Visualizations</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/statistics/">Statistics</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>Explore Generated Visualizations</h2>
+        <div class="visualizations">
+            {% for histogram in histograms %}
+            <div class="visualization">
+                <h3>{{ histogram.title }}</h3>
+                <a href="/zoom/{{ histogram.image }}?title={{ histogram.title }}&description={{ histogram.description }}">
+                    <img src="/static/{{ histogram.image }}" alt="{{ histogram.title }}">
+                </a>
+                <p>{{ histogram.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Data Visualizations</p>
+    </footer>
+</body>
+</html>
